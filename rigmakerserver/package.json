@@ -1,0 +1,21 @@
+{
+  "name": "rigmakerserver",
+  "version": "1.0.0",
+  "description": "Server",
+  "author": "Angadpreet Nagpal",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "start": "./bin/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "mongodb": "^3.5.5",
+    "pino": "^6.1.1",
+    "pino-http": "^5.0.0",
+    "pino-pretty": "^4.0.0"
+  }
+}

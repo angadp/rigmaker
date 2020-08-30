@@ -1,0 +1,434 @@
+/*
+	Author: Angadpreet Nagpal;
+*/
+
+/* Cabinet */
+.cabinet{
+	margin:0 auto;
+	width: 450px;
+	display: block;
+	height: 400px;
+}
+
+.cabinetPanel{
+	float: left;
+	position: relative;
+	top:40px;
+	left:2px;
+	background-color: #30302c;
+	height: 297px;
+	width: 300px;
+}
+
+.cabinetBack {
+	position: relative;
+	float: left;
+	top:60px;
+	width: 110px;
+	height: 298px;
+	transform: skew(0deg, -20deg);
+	background: #30302c;
+}
+
+.cabinetBottom {
+	position: relative;
+	float: left;
+	top:42px;
+	left:-52px;
+	width: 300px;
+	height: 40px;
+	transform: skew(-70deg);
+	background: #30302c;
+	z-index: -3;
+}
+
+/* Motherboard */
+.motherboard {
+	float: left;
+	position: relative;
+	top:82px;
+	left:12px;
+	background-image: linear-gradient(#0ccf40, #54d175);
+	height: 203px;
+	width: 230px;
+}
+
+.motherline1 {
+	position: absolute;
+	left: 30px;
+	top: 60px;
+	border-left: 1px solid green;
+	height: 120px;
+}
+
+.motherline2 {
+    width: 112px;
+    height: 47px;
+    border-bottom: 1px solid green;
+    -webkit-transform:
+        translateY(20px)
+        translateX(5px)
+        rotate(-26deg);
+    position: absolute;
+    top: -29px;
+    left: 10px;
+}
+
+.motherline3 {
+    width: 92px;
+    height: 47px;
+    border-bottom: 1px solid green;
+    -webkit-transform:
+        translateY(20px)
+        translateX(5px)
+        rotate(-37deg);
+    position: absolute;
+    top: -23px;
+    left: 30px;
+}
+
+.motherline4 {
+	position: absolute;
+	left: 59px;
+	top: 68px;
+	border-left: 1px solid green;
+	height: 130px;
+}
+
+.motherline5 {
+	z-index:4;
+	position: absolute;
+	top: 50px;
+	left:60px;
+	border-bottom: 2px solid green;
+	margin: 0 1em 1em 0;
+	height: 45px;
+	width: 90px;
+	border-bottom-left-radius: 90px;
+	border-bottom-right-radius: 90px;
+}
+
+.motherline6 {
+	position: absolute;
+	left: 99px;
+	top: 68px;
+	height:2px;
+	border-bottom: 1px solid green;
+	width: 50px;
+}
+
+.motherline7 {
+    width: 82px;
+    height: 47px;
+    border-bottom: 1px solid green;
+    -webkit-transform:
+        translateY(20px)
+        translateX(5px)
+        rotate(26deg);
+    position: absolute;
+    top: -34px;
+    left: 133px;
+}
+
+.motherline8 {
+    width: 132px;
+    height: 47px;
+    border-bottom: 1px solid green;
+    -webkit-transform:
+        translateY(20px)
+        translateX(5px)
+        rotate(-43deg);
+    position: absolute;
+    top: 32px;
+    left: 72px;
+}
+
+.motherline9 {
+	position: absolute;
+	left: 111px;
+	top: 135px;
+	height:2px;
+	border-bottom: 1px solid green;
+	width: 70px;
+}
+
+.motherline10 {
+	position: absolute;
+	left: 159px;
+	top: 138px;
+	border-left: 1px solid green;
+	height: 50px;
+}
+
+.motherline11 {
+	position: absolute;
+	left: 131px;
+	top: 185px;
+	height:2px;
+	border-bottom: 1px solid green;
+	width: 60px;
+}
+
+/* Powersupply */
+.powersupply { 
+	z-index: 2;
+	position:absolute; 
+	top:265px; 
+	width:33px; 
+	height:33px; 
+	left:-90px;
+	transform-style: preserve-3d;
+	transform: rotateX(-5deg) rotateY(-10deg);
+	transition: transform 2s;
+}
+
+.powersupply > div 
+{ 
+	position:absolute; 
+	width:65px; 
+	height:65px; 
+	border:1px solid white; 
+	background-color:#999; 
+}
+
+.front 
+{ 
+	transform: translateZ(33px); 
+}
+
+.right 
+{ 
+	transform: rotateY(90deg) translateZ(33px); 
+}
+
+.top 
+{ 
+	transform: rotateX(90deg) translateZ(33px); 
+}
+
+/* RAM */
+.RAM
+{
+	background-color: #4287f5;
+	height: 20px;
+	width: 80px;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
+/* Processor */
+.Processor
+{
+	position: absolute;
+	top: 160px;
+	left: 40px;
+}
+
+.ProcessorUnit
+{
+	height: 25px;
+	width: 25px;
+	background-color: #949494;
+}
+
+.ProcessorLine1
+{
+	position: absolute;
+	left: 6px;
+	top: -5px;
+	border-left: 2px solid #757575;
+	height: 12px;
+}
+
+.ProcessorLine2
+{
+	position: absolute;
+	left: 16px;
+	top: -5px;
+	border-left: 2px solid #757575;
+	height: 12px;
+}
+
+.ProcessorLine3
+{
+	position: absolute;
+	left: 6px;
+	top: 18px;
+	border-left: 2px solid #757575;
+	height: 12px;
+}
+
+.ProcessorLine4
+{
+	position: absolute;
+	left: 16px;
+	top: 18px;
+	border-left: 2px solid #757575;
+	height: 12px;
+}
+
+.ProcessorLine5 {
+	position: absolute;
+	left: -6px;
+	top: 9px;
+	height:2px;
+	border-bottom: 2px solid #757575;
+	width: 12px;
+}
+
+.ProcessorLine6 {
+	position: absolute;
+	left: 18px;
+	top: 9px;
+	height:2px;
+	border-bottom: 2px solid #757575;
+	width: 12px;
+}
+
+/* Cabinet Fan */
+.CabinetFan1
+{
+	position: absolute;
+	top:25px;
+	left:35px;
+	width: 45px;
+	height: 45px;
+	line-height: 200px;
+	border-radius: 50%; /* the magic */
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	background-color: #3498db;
+	background-image: radial-gradient(#fc0f08, #94130f);
+}
+
+.CabinetFan2
+{
+	position: absolute;
+	top:85px;
+	left:35px;
+	width: 45px;
+	height: 45px;
+	line-height: 200px;
+	border-radius: 50%; /* the magic */
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	background-color: #3498db;
+	background-image: radial-gradient(#FFFFFF, #0909ed);
+}
+
+/* Graphics Card */
+.GraphicsCard { 
+	z-index: 2;
+	position:relative; 
+	top:110px;
+	width:53px; 
+	height:8px; 
+	left:-90px;
+	transform-style: preserve-3d;
+	transform: rotateX(-5deg) rotateY(-10deg);
+	transition: transform 2s;
+}
+
+.GraphicsCard > div 
+{ 
+	position:absolute; 
+	width:75px; 
+	height:15px; 
+	left: 100px;
+	border:1px solid white; 
+	background-color:#f74d3e; 
+}
+
+.Gfront 
+{ 
+	transform: translateZ(8px); 
+}
+
+.Gright 
+{ 
+	top:-2px;
+	transform: rotateY(90deg) translateZ(44px); 
+}
+
+.Gtop 
+{ 
+	top:-1px;
+	transform: rotateX(180deg) translateZ(8px); 
+}
+
+/* Optical Drive */
+.OpticalDrive { 
+	z-index: 2;
+	position:absolute; 
+	top:10px;
+	width:53px; 
+	height:8px; 
+	left:110px;
+	transform-style: preserve-3d;
+	transform: rotateX(-5deg) rotateY(-10deg);
+	transition: transform 2s;
+}
+
+.OpticalDrive > div 
+{ 
+	position:absolute; 
+	width:75px; 
+	height:55px; 
+	left: 100px;
+	border:1px solid white; 
+	background-color:#999; 
+}
+
+.Ofront 
+{ 
+	transform: translateZ(8px); 
+}
+
+.Oright 
+{ 
+	top:-2px;
+	transform: rotateY(90deg) translateZ(44px); 
+}
+
+.Otop 
+{ 
+	top:-1px;
+	transform: rotateX(180deg) translateZ(59px); 
+}
+
+/* ComponentChooser */
+.ComponentChooser
+{
+	display: block;
+	margin: 0 auto;
+	top:300px;
+}
+
+/* ComponentHeader */
+.HeaderList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  background-color: #333333;
+}
+
+.HeaderList li {
+  display: inline-block;
+  float: left;
+}
+
+.HeaderList li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.HeaderList li a:hover {
+  background-color: #111111;
+}
