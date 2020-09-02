@@ -85,7 +85,7 @@ class ComponentHeader extends Component {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Cabinet" {...a11yProps(0)} onClick={() => this.handleSelect(0)}/>
+          <Tab label="Processor" {...a11yProps(0)} onClick={() => this.handleSelect(0)}/>
           <Tab label="Motherboard" {...a11yProps(1)} onClick={() => this.handleSelect(1)}/>
           <Tab label="RAM" {...a11yProps(2)} onClick={() => this.handleSelect(2)}/>
           <Tab label="Hard Drive" {...a11yProps(3)} onClick={() => this.handleSelect(3)}/>
@@ -105,7 +105,7 @@ class ComponentHeader extends Component {
         </Tabs>
       </AppBar>
       <TabPanel value={this.state.val} index={0} >
-        <Comps />
+        <Comps products={this.props.products}/>
       </TabPanel>
       <TabPanel value={this.state.val} index={1} >
         Motherboard

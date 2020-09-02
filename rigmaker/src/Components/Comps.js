@@ -3,12 +3,19 @@ import Comp from './Comp';
 
 class Comps extends Component {
 	render(){
+		var list = []
+		if(this.props.products)
+		{
+			var i;
+			for(i=0;i<this.props.products.length;i++)
+			{
+				list.push(<Comp product={this.props.products[i]} key={this.props.products[i]._id}></Comp>);
+			}
+		}
 		return (
-			<Fragment>
-				<Comp></Comp>
-				<Comp></Comp>
-				<Comp></Comp>
-			</Fragment>
+				<Fragment>
+				{list}
+				</Fragment>
 			);
 	}
 }
