@@ -20,6 +20,7 @@ class Motherboard extends Component {
 				<span className={styles.motherline10}></span>
 				<span className={styles.motherline11}></span>
 				<RAM></RAM>
+				<RAM></RAM>
 				<Processor></Processor>
 				<GraphicsCard></GraphicsCard>
 			</div>

@@ -4,9 +4,15 @@ import styles from '../App.module.css';
 class CabinetFan extends Component {
 	render(){
 		return (
-			<Fragment>
-				<div className={styles.CabinetFan1}></div>
-			</Fragment>
+			<div className={styles.fan__blades}>
+				<input type="checkbox" className={styles.engine2} hidden checked />
+				<div className={styles.fan__blades}>
+					<div className={styles.blade}><span></span></div>
+					<div className={styles.blade}><span></span></div>
+					<div className={styles.blade}><span></span></div>
+					<div className={styles.blade}><span></span></div>
+				</div>
+			</div>
 			);
 	}
 }

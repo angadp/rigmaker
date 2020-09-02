@@ -70,7 +70,6 @@ class ComponentHeader extends Component {
     this.setState({
       "val" : index
     });
-    console.log(this.props.products);
   }
 
   render()

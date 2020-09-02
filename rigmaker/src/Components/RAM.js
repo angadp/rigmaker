@@ -1,10 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import styles from '../App.module.css';
 
 class RAM extends Component {
 	render(){
 		return (
-			<div className={styles.RAM}></div>
+			<Fragment>
+				<div className={styles.RAM1}></div>
+				<div className={styles.RAM2}></div>
+			</Fragment>
 			);
 	}
 }
