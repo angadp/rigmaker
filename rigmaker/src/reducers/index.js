@@ -88,9 +88,6 @@ export function rootReducer(state = initialState, action) {
                 add = false;
             }
             var comp = Object.assign({}, state.components);
-            // if (state.components.hasOwnProperty("processor")) { 
-            //     delete state.components["processor"];
-            // }
             console.log(state.components)
             if(add == true){
                 comp.processor = action.payload
