@@ -1,11 +1,12 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING } from "../constants/action-types";
 
 const initialState = {
   articles: [],
   pending: false,
   products: [],
   error: null,
-  orig_products: []
+  orig_products: [],
+  components: {}
 };
 
 function checkMatch(word) {
@@ -55,7 +56,6 @@ export function rootReducer(state = initialState, action) {
                 pending: true
             }
         case SEARCH_PRODUCTS:
-            console.log(action.payload)
             prods = []
             var i;
             console.log(state.orig_products)
@@ -71,15 +71,38 @@ export function rootReducer(state = initialState, action) {
                 pending: false,
                 products: prods
             }
-            // var prods = state.products.sort(function(a,b){
-            //     return a.Cores - b.Cores
-            // });
-            // console.log(prods);
-            // return {
-            //     ...state,
-            //     pending: false,
-            //     products: prods
+        case ADD_PROCESSOR_PENDING:
+            return {
+                ...state,
+                pending: true
+            }
+        case ADD_PROCESSOR:
+            console.log("Called t");
+            if(state.components == undefined)
+            {
+                state.components = {}
+            }
+            var add = true;
+            if(state.components["processor"] != undefined && state.components["processor"] == action.payload)
+            {
+                add = false;
+            }
+            var comp = Object.assign({}, state.components);
+            // if (state.components.hasOwnProperty("processor")) { 
+            //     delete state.components["processor"];
             // }
+            console.log(state.components)
+            if(add == true){
+                comp.processor = action.payload
+            }
+            else{
+                comp.processor = {}
+            }
+           return {
+                ...state,
+                pending: false,
+                components: comp
+            }
     }
     return state;
 }
@@ -88,5 +111,4 @@ export default rootReducer;
 export const getProducts = state => state.products;
 export const getProductsPending = state => state.pending;
 export const getProductsError = state => state.error;
-export const sortProducts = state => state.products;
-export const searchProducts = state => state.products;
+export const getComponents = state => state.components;

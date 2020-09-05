@@ -17,7 +17,7 @@ import { bindActionCreators } from 'redux';
 import searchProductsAction from '../reducers/searchProducts';
 import fetchProductsAction from '../reducers/fetchProducts';
 import sortProductsAction from '../reducers/sortProducts';
-import {getProductsError, getProducts, getProductsPending, sortProducts, searchProducts} from '../reducers';
+import {getProductsError, getProducts, getProductsPending, getComponents} from '../reducers';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,9 +55,9 @@ class ComponentHeader extends Component {
   constructor(props)
   {
     super(props);
-    this.state = { "val" : 0 };
+    this.state = { "val" : 0, "selected": "" };
     this.value = 0;
-    this.handleChange = this.handleChange.bind(this);  
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
@@ -66,9 +66,6 @@ class ComponentHeader extends Component {
     }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.products !== this.props.products) {
-            console.log(this.props.products);
-        }
         console.log("Again");
     }
 
@@ -193,8 +190,7 @@ const mapStateToProps = state => ({
     error: getProductsError(state),
     products: getProducts(state),
     pending: getProductsPending(state),
-    sorted: sortProducts(state),
-    searched: searchProducts(state)
+    component: getComponents(state)
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

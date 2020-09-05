@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import { connect } from 'react-redux';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,6 +9,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Modal, Carousel} from 'react-bootstrap';
+import store from '../store';
+
+import { bindActionCreators } from 'redux';
+
+
+import addProcessorAction from '../reducers/addToCart';
+import {getProductsPending, getComponents} from '../reducers';
 
 import styles from '../App.module.css';
 function MyVerticallyCenteredModal(props) {
@@ -70,6 +78,11 @@ class Comp extends Component {
   {
     super(props);
     this.state = { "show" : false };
+    this.addToCart = this.addToCart.bind(this);  
+  }
+
+  componentDidMount() {
+    console.log("ANgad1");
   }
 
   handleClose()
@@ -82,11 +95,23 @@ class Comp extends Component {
     this.setState({"show":true})
   }
 
-  addToCart(){
-    
+  addToCart(i, selected){
+    const {addProcessor} = this.props;
+    addProcessor(i, selected);
+  }
+
+  componentDidUpdate(){
+    console.log("Angad");
   }
 
   render(){
+  var comp = this.props.components;
+  var selected = false;
+  console.log(comp);
+  if (comp != undefined && comp.hasOwnProperty("processor")) { 
+    if(comp.processor.Name == this.props.product.Name)
+      selected = true;
+  }
   var speed = this.props.product.Speed;
   var speedText = ""
   var powerText = ""
@@ -131,8 +156,13 @@ class Comp extends Component {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Add to cart
+        <Button size="small" color="primary"  onClick={() => this.addToCart(this.props.product, selected)}>
+          {(() => {
+        switch (selected) {
+          case false:   return "Add to Cart";
+          case true: return "Remove from Cart";
+        }
+      })()}
         </Button>
         <Button size="small" onClick={() => this.handleShow()}>
           Learn More
@@ -142,7 +172,7 @@ class Comp extends Component {
     <MyVerticallyCenteredModal
         product={this.props.product}
         show={this.state.show}
-        addToCart={() => this.addToCart()}
+        addToCart={() => this.addToCart(this.props.product.Name)}
         onHide={() => this.handleClose()}
       />
       </Fragment>
@@ -150,4 +180,16 @@ class Comp extends Component {
 }
 }
 
-export default Comp;
+const mapStateToProps = state => ({
+    pending: getProductsPending(state),
+    components: getComponents(state)
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    addProcessor: addProcessorAction
+}, dispatch)
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Comp);
