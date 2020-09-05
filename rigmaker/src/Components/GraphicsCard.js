@@ -9,7 +9,7 @@ class GraphicsCard extends Component {
 			    <div className={styles.Gtop}></div>
 			    <div className={styles.Gleft}></div>
 			    <div className={styles.Gright}></div>
-			    <div className={styles.Gfront}>GTX</div>
+			    <div className={styles.Gfront}>GPU</div>
 			    <div className={styles.Gback}></div>
 			  </div>
 			</div>

@@ -691,3 +691,18 @@
     float: left;
     margin:5px;
 }
+
+.CarouselPic {
+	width: 50%;
+	margin: 0 auto;
+	margin-left: 25%;
+}
+
+.CarouselMid {
+	height: 50%;
+	margin: 0 auto;
+}
+
+.CarouselItem {
+	margin: 0 auto;
+}

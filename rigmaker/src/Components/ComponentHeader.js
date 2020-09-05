@@ -8,12 +8,14 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Comps from './Comps';
+import { orderBy } from "lodash";
 import store from '../store';
 
 import { bindActionCreators } from 'redux';
 
 import fetchProductsAction from '../reducers/fetchProducts';
-import {getProductsError, getProducts, getProductsPending} from '../reducers';
+import sortProductsAction from '../reducers/sortProducts';
+import {getProductsError, getProducts, getProductsPending, sortProducts} from '../reducers';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,6 +66,7 @@ class ComponentHeader extends Component {
         if (prevProps.products !== this.props.products) {
             console.log(this.props.products);
         }
+        console.log("Again");
     }
 
   handleSelect(index){
@@ -71,6 +74,21 @@ class ComponentHeader extends Component {
       "val" : index
     });
   }
+
+  handleColumnHeaderClick() {
+    // var coll = this.props.products;
+
+    //   const sortedCollection = orderBy(
+    //     coll,
+    //     ["cores"],
+    //     true
+    //   );
+
+      // console.log(sortedCollection);
+      console.log("Redo");
+      const {sortProducts} = this.props;
+      sortProducts();
+    }
 
   render()
   {
@@ -105,6 +123,7 @@ class ComponentHeader extends Component {
         </Tabs>
       </AppBar>
       <TabPanel value={this.state.val} index={0} >
+        <button onClick={() => this.handleColumnHeaderClick()}>Call</button>
         <Comps products={this.props.products}/>
       </TabPanel>
       <TabPanel value={this.state.val} index={1} >
@@ -163,11 +182,13 @@ class ComponentHeader extends Component {
 const mapStateToProps = state => ({
     error: getProductsError(state),
     products: getProducts(state),
-    pending: getProductsPending(state)
+    pending: getProductsPending(state),
+    sorted: sortProducts(state)
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    fetchProducts: fetchProductsAction
+    fetchProducts: fetchProductsAction,
+    sortProducts :sortProductsAction
 }, dispatch)
 
 export default connect(

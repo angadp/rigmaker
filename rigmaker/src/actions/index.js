@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING } from "../constants/action-types";
 
 export function addArticle(payload) {
   console.log("add");
@@ -16,6 +16,18 @@ export function fetchProductsSuccess(products) {
     return {
         type: FETCH_PRODUCTS_SUCCESS,
         products: products
+    }
+}
+
+export function sortProducts(){
+    return {
+        type: SORT_PRODUCTS
+    }
+}
+
+export function sortProductsPending(){
+    return {
+        type: SORT_PRODUCTS_PENDING
     }
 }
 

@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING } from "../constants/action-types";
 
 const initialState = {
   articles: [],
@@ -27,22 +27,27 @@ export function rootReducer(state = initialState, action) {
                 pending: false,
                 error: action.error
             }
+        case SORT_PRODUCTS_PENDING:
+            return {
+                ...state,
+                pending: true
+            }
+        case SORT_PRODUCTS:
+            var prods = state.products.sort(function(a,b){
+                return a.Cores - b.Cores
+            });
+            console.log(prods);
+            return {
+                ...state,
+                pending: false,
+                products: prods
+            }
     }
     return state;
 }
-
-// function rootReducer(state = initialState, action) {
-//   if (action.type === ADD_ARTICLE) {
-//   	console.log(state.articles);
-//     return Object.assign({}, state, {
-//       articles: state.articles.concat(action.payload)
-//     });
-//   	console.log(state.articles);
-//   }
-//   return state;
-// }
 
 export default rootReducer;
 export const getProducts = state => state.products;
 export const getProductsPending = state => state.pending;
 export const getProductsError = state => state.error;
+export const sortProducts = state => state.products;
