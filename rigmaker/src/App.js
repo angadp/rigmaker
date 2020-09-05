@@ -5,7 +5,8 @@ import ComponentChooser from './Components/ComponentChooser';
 import store from "./store";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Drawer from './Components/Drawer';
-import SignIn from './Components/signin'
+import SignIn from './Components/signin';
+import SignUp from './Components/SignUp';
 import { Switch, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux'
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/about" component={About} />
         <Route path="/signin" component={Login} />
+        <Route path="/signup" component={SignUpPage} />
     </Switch>
   );
 }
@@ -52,6 +54,18 @@ export class Login extends Component {
 		  	<Provider store={store}>
 			  <Drawer>
 		  		<SignIn />
+			  </Drawer>
+			</Provider>
+  );
+	}
+}
+
+export class SignUpPage extends Component {
+	render(){
+		return (
+		  	<Provider store={store}>
+			  <Drawer>
+		  		<SignUp />
 			  </Drawer>
 			</Provider>
   );
