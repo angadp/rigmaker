@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Drawer from './Components/Drawer';
 import SignIn from './Components/signin';
 import SignUp from './Components/SignUp';
+import Checkout from './Components/Checkout';
 import { Switch, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux'
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={SignUpPage} />
+        <Route path="/checkout" component={CheckoutPage} />
     </Switch>
   );
 }
@@ -66,6 +68,18 @@ export class SignUpPage extends Component {
 		  	<Provider store={store}>
 			  <Drawer>
 		  		<SignUp />
+			  </Drawer>
+			</Provider>
+  );
+	}
+}
+
+export class CheckoutPage extends Component {
+	render(){
+		return (
+		  	<Provider store={store}>
+			  <Drawer>
+		  		<Checkout />
 			  </Drawer>
 			</Provider>
   );
