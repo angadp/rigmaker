@@ -107,10 +107,6 @@ class Comp extends Component {
   }
   powerText = this.props.product.Power + " W";
   var priceText = "Rs " + this.props.product.Price;
-  if(this.props.product)
-  {
-    console.log(this.props.product);
-  }
   return (
     <Fragment>
     <Card className={styles.card}>

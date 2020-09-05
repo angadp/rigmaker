@@ -13,9 +13,11 @@ import store from '../store';
 
 import { bindActionCreators } from 'redux';
 
+
+import searchProductsAction from '../reducers/searchProducts';
 import fetchProductsAction from '../reducers/fetchProducts';
 import sortProductsAction from '../reducers/sortProducts';
-import {getProductsError, getProducts, getProductsPending, sortProducts} from '../reducers';
+import {getProductsError, getProducts, getProductsPending, sortProducts, searchProducts} from '../reducers';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,6 +57,7 @@ class ComponentHeader extends Component {
     super(props);
     this.state = { "val" : 0 };
     this.value = 0;
+    this.handleChange = this.handleChange.bind(this);  
   }
 
   componentWillMount() {
@@ -88,6 +91,12 @@ class ComponentHeader extends Component {
       console.log("Redo");
       const {sortProducts} = this.props;
       sortProducts();
+    }
+
+    handleChange(e) {
+      console.log(e.target.value);
+      const {searchProducts} = this.props;
+      searchProducts(e.target.value);
     }
 
   render()
@@ -124,6 +133,7 @@ class ComponentHeader extends Component {
       </AppBar>
       <TabPanel value={this.state.val} index={0} >
         <button onClick={() => this.handleColumnHeaderClick()}>Call</button>
+        <input name="search" type="text" onChange={this.handleChange} />
         <Comps products={this.props.products}/>
       </TabPanel>
       <TabPanel value={this.state.val} index={1} >
@@ -183,12 +193,14 @@ const mapStateToProps = state => ({
     error: getProductsError(state),
     products: getProducts(state),
     pending: getProductsPending(state),
-    sorted: sortProducts(state)
+    sorted: sortProducts(state),
+    searched: searchProducts(state)
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     fetchProducts: fetchProductsAction,
-    sortProducts :sortProductsAction
+    sortProducts :sortProductsAction,
+    searchProducts :searchProductsAction
 }, dispatch)
 
 export default connect(
