@@ -23,6 +23,8 @@ function MyVerticallyCenteredModal(props) {
     <Modal
       {...props}
       size="lg"
+      BackdropProps={{style: {backgroundColor: 'transparent'}}}
+      style= {{ backgroundColor: "rgba(117,125,232, 0.3)" } }
       className={styles.Modal}
       aria-labelledby="contained-modal-title-vcenter"
       centered
