@@ -8,8 +8,10 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Comps from './Comps';
+import SearchField from './SearchField';
 import { orderBy } from "lodash";
 import store from '../store';
+import styles from '../App.module.css';
 
 import { bindActionCreators } from 'redux';
 
@@ -100,13 +102,17 @@ class ComponentHeader extends Component {
   {
   return (
     <div>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default"
+          style={{ minWidth: 500 }}>
         <Tabs
           value={this.state.val}
           indicatorColor="primary"
           textColor="primary"
           variant="scrollable"
+          className={styles.tabs}
           scrollButtons="auto"
+          style={{ minWidth: 500 }}
+          orientation="horizontal"
           aria-label="scrollable auto tabs example"
         >
           <Tab label="Processor" {...a11yProps(0)} onClick={() => this.handleSelect(0)}/>
@@ -129,8 +135,7 @@ class ComponentHeader extends Component {
         </Tabs>
       </AppBar>
       <TabPanel value={this.state.val} index={0} >
-        <button onClick={() => this.handleColumnHeaderClick()}>Call</button>
-        <input name="search" type="text" onChange={this.handleChange} />
+        <SearchField onChange={this.handleChange} />
         <Comps products={this.props.products}/>
       </TabPanel>
       <TabPanel value={this.state.val} index={1} >

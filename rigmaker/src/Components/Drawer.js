@@ -27,10 +27,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
+    height: '60px',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }),
+    })
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -92,7 +93,7 @@ export default function PersistentDrawerLeft(props) {
         position="fixed"
         className={clsx(classes.appBar)}
       >
-        <Toolbar>
+        <Toolbar className={clsx(classes.toolBar)}>
           <IconButton
             color="inherit"
             aria-label="open drawer"

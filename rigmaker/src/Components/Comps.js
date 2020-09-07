@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import Comp from './Comp';
+import styles from '../App.module.css';
 
 class Comps extends Component {
 	render(){
@@ -13,9 +14,9 @@ class Comps extends Component {
 			}
 		}
 		return (
-				<Fragment>
+				<div className={styles.Comps}>
 				{list}
-				</Fragment>
+				</div>
 			);
 	}
 }

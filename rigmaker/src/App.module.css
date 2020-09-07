@@ -7,7 +7,8 @@
 	margin:0 auto;
 	width: 450px;
 	display: block;
-	height: 400px;
+	height: 380px;
+  margin-top: -40px;
 }
 
 .cabinetPanel{
@@ -549,7 +550,7 @@
  span {
      display: block;
 }
-                           
+
  .fan {
      width: 50px;
      height: 50px;
@@ -696,6 +697,17 @@
 	width: 50%;
 	margin: 0 auto;
 	margin-left: 25%;
+}
+
+.Comps {
+  display: block;
+  margin: 0px auto;
+  width: 80%;
+}
+
+.Modal {
+  margin-top: 3%;
+  margin-bottom: 2%;
 }
 
 .CarouselMid {

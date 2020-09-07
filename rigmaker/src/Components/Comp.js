@@ -23,6 +23,7 @@ function MyVerticallyCenteredModal(props) {
     <Modal
       {...props}
       size="lg"
+      className={styles.Modal}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
