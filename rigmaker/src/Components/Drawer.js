@@ -6,6 +6,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -69,8 +71,8 @@ export default function PersistentDrawerLeft(props) {
 
   const history = useHistory();
 
-  const routeChange = () =>{ 
-    let path = 'about'; 
+  const routeChange = (route) =>{ 
+    let path = route; 
     history.push(path);
   }
 
@@ -106,6 +108,9 @@ export default function PersistentDrawerLeft(props) {
           <Typography variant="h6" noWrap>
             RigMakr
           </Typography>
+          <Tabs>
+          <Tab label="Cart" onClick={() => routeChange("cart")}/>
+          </Tabs>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -124,21 +129,14 @@ export default function PersistentDrawerLeft(props) {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text} onClick={() => routeChange()}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button key="Cart" onClick={() => routeChange("cart")}>
+              <ListItemIcon></ListItemIcon>
+              <ListItemText primary="Cart" />
             </ListItem>
-          ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          
         </List>
       </Drawer>
       <main

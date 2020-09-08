@@ -8,6 +8,7 @@ import Drawer from './Components/Drawer';
 import SignIn from './Components/signin';
 import SignUp from './Components/SignUp';
 import Checkout from './Components/Checkout';
+import CartComp from './Components/CartComp';
 import { Switch, Route } from 'react-router-dom';
 
 import { Provider } from 'react-redux'
@@ -16,7 +17,7 @@ function App() {
   return (
   	<Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/about" component={About} />
+        <Route path="/cart" component={Cart} />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={SignUpPage} />
         <Route path="/checkout" component={CheckoutPage} />
@@ -39,11 +40,12 @@ export class Home extends Component {
 	}
 }
 
-export class About extends Component {
+export class Cart extends Component {
 	render(){
 		return (
 		  	<Provider store={store}>
 			  <Drawer>
+			  	<CartComp />
 			  </Drawer>
 			</Provider>
   );

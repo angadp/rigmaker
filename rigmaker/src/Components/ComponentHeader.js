@@ -140,7 +140,7 @@ class ComponentHeader extends Component {
       </AppBar>
       <TabPanel value={this.state.val} index={0} >
         <SearchField onChange={this.handleChange} />
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-primary" role="alert" style={{minWidth: 450}}>
           {current}
         </div>
         <Comps products={this.props.products}/>
