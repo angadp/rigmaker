@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Modal, Carousel} from 'react-bootstrap';
 import store from '../store';
+import TransitionsModal from './TransitionsModal';
 
 import { bindActionCreators } from 'redux';
 
@@ -172,7 +173,7 @@ class Comp extends Component {
         </Button>
       </CardActions>
     </Card>
-    <MyVerticallyCenteredModal
+    <TransitionsModal
         product={this.props.product}
         show={this.state.show}
         addToCart={() => this.addToCart(this.props.product.Name)}
