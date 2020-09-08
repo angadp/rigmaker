@@ -100,6 +100,10 @@ class ComponentHeader extends Component {
 
   render()
   {
+    var current = ""
+    console.log(this.props.components);
+    if(this.props.components != undefined && this.props.components.hasOwnProperty("processor"))
+      current = this.props.components.processor.Name;
   return (
     <div>
       <AppBar position="static" color="default"
@@ -136,6 +140,9 @@ class ComponentHeader extends Component {
       </AppBar>
       <TabPanel value={this.state.val} index={0} >
         <SearchField onChange={this.handleChange} />
+        <div class="alert alert-primary" role="alert">
+          {current}
+        </div>
         <Comps products={this.props.products}/>
       </TabPanel>
       <TabPanel value={this.state.val} index={1} >
@@ -195,7 +202,7 @@ const mapStateToProps = state => ({
     error: getProductsError(state),
     products: getProducts(state),
     pending: getProductsPending(state),
-    component: getComponents(state)
+    components: getComponents(state)
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

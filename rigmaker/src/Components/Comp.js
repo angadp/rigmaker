@@ -105,13 +105,11 @@ class Comp extends Component {
   }
 
   componentDidUpdate(){
-    console.log("Angad");
   }
 
   render(){
   var comp = this.props.components;
   var selected = false;
-  console.log(comp);
   if (comp != undefined && comp.hasOwnProperty("processor")) { 
     if(comp.processor.Name == this.props.product.Name)
       selected = true;
@@ -121,17 +119,14 @@ class Comp extends Component {
   var powerText = ""
   if(speed > 1000000000)
   {
-    console.log(speed/1000000000.0);
     speedText = String(speed/1000000000.0) + " GHz";
   }
   else if(speed > 1000000)
   {
-    console.log(speed/1000000.0);
     speedText = String(speed/1000000.0) + " MHz";
   }
   else if(speed > 1000)
   {
-    console.log(speed/1000.0);
     speedText = String(speed/1000.0) + " KHz";
   }
   powerText = this.props.product.Power + " W";
