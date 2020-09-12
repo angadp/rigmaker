@@ -42,6 +42,16 @@ module.exports = function main (options, cb) {
   // Create the express app
   const app = express()
 
+  var cors = require('cors')
+
+  var bodyParser = require('body-parser')
+  app.use( bodyParser.json() );       // to support JSON-encoded bodies
+  app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+  })); 
+  
+  app.use(cors())
+
 
   // Common middleware
   // app.use(/* ... */)

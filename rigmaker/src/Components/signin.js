@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import store from '../store';
+import { connect } from 'react-redux';
+
+
+import { bindActionCreators } from 'redux';
+
+import loginAction from '../reducers/login';
 
 function Copyright() {
   return (
@@ -46,20 +53,46 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
-  const classes = useStyles();
+class SignIn extends Component {
+  constructor(props){
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleChange1 = this.handleChange1.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.state = {'username': '', 'password': ''};
+  }
 
+  handleLogin(){
+    const {login} = this.props;
+    login(this.state.username, this.state.password);
+  }
+
+  handleChange1(e){
+    console.log(e.target.value)
+    this.setState({
+      'username': e.target.value
+    })
+  }
+
+  handleChange2(e){
+    console.log(e.target.value)
+    this.setState({
+      'password': e.target.value
+    })
+  }
+
+ render(){
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <div >
+        <Avatar >
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -69,6 +102,7 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            onChange={this.handleChange1}
             autoFocus
           />
           <TextField
@@ -79,6 +113,7 @@ export default function SignIn() {
             name="password"
             label="Password"
             type="password"
+            onChange={this.handleChange2}
             id="password"
             autoComplete="current-password"
           />
@@ -87,11 +122,10 @@ export default function SignIn() {
             label="Remember me"
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            onClick={this.handleLogin}
           >
             Sign In
           </Button>
@@ -115,3 +149,16 @@ export default function SignIn() {
     </Container>
   );
 }
+}
+
+const mapStateToProps = state => ({
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    login: loginAction
+}, dispatch)
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SignIn );

@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL } from "../constants/action-types";
 
 const initialState = {
   articles: [],
@@ -15,8 +15,20 @@ function checkMatch(word) {
 }
 
 export function rootReducer(state = initialState, action) {
-	console.log(action.products);
+    console.log(action.type)
     switch(action.type) {
+        case LOGIN_PENDING:
+            console.log('login');
+            return {
+                ...state,
+                pending: true
+            }
+        case LOGIN_SUCCESSFUL:
+            console.log('login');
+            return {
+                ...state,
+                pending: false
+            }
         case FETCH_PRODUCTS_PENDING: 
             return {
                 ...state,
