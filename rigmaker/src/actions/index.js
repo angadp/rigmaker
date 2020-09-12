@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING } from "../constants/action-types";
 
 export function addArticle(payload) {
   console.log("add");
@@ -14,6 +14,13 @@ export function addProcessor(i, selected){
         type : ADD_PROCESSOR,
         payload: i,
         selected: selected
+    }
+}
+
+export function login(){
+    console.log("login dispatch");
+    return {
+        type: LOGIN_PENDING
     }
 }
 
