@@ -9,19 +9,22 @@ import SignIn from './Components/signin';
 import SignUp from './Components/SignUp';
 import Checkout from './Components/Checkout';
 import CartComp from './Components/CartComp';
-import { Switch, Route } from 'react-router-dom';
+import Profile from './Components/profile';
+import { Router, Switch, Route } from 'react-router-dom';
+import history from './history';
 
 import { Provider } from 'react-redux'
 
 function App() {
   return (
-  	<Switch>
+  	<Router  history={history}>
         <Route path="/" component={Home} exact />
         <Route path="/cart" component={Cart} />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={SignUpPage} />
         <Route path="/checkout" component={CheckoutPage} />
-    </Switch>
+        <Route path="/profile" component={ProfilePage} />
+    </Router>
   );
 }
 
@@ -82,6 +85,18 @@ export class CheckoutPage extends Component {
 		  	<Provider store={store}>
 			  <Drawer>
 		  		<Checkout />
+			  </Drawer>
+			</Provider>
+  );
+	}
+}
+
+export class ProfilePage extends Component {
+	render(){
+		return (
+		  	<Provider store={store}>
+			  <Drawer>
+		  		<Profile />
 			  </Drawer>
 			</Provider>
   );

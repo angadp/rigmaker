@@ -1,5 +1,6 @@
-import {login} from '../actions';
+import {login, loginsuc, loginunsuc} from '../actions';
 import axios from 'axios';
+import history from '../history';
 
 export default function loginAction(username, password) {
 	return dispatch => {
@@ -15,7 +16,15 @@ export default function loginAction(username, password) {
 		})
 		.then(function (response) {
     		// handle success
-    		console.log(response);
+    		if(response.data != null)
+    		{
+	    		history.push('profile');
+	    		dispatch(loginsuc(response));
+    		}
+    		else
+    		{
+    			dispatch(loginunsuc());
+    		}
   		})
 	}
 }

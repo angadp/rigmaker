@@ -11,7 +11,12 @@ MongoClient.connect('mongodb://localhost:27017/rigmaker', function (err, client)
 
   db.collection('login').findOne({'username':req.body.username, 'password':req.body.password}, function(err, result) {
     if (err) res.json(err);
-    res.json(result);
+    else{
+    	db.collection('user').findOne({'username':req.body.username} , function(err, result) {
+    	if (err) res.json(err);
+    	res.json(result);
+	});
+    }
   })
 }) 
 }

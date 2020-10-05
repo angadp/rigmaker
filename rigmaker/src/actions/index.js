@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL, LOGIN_UNSUCCESSFUL } from "../constants/action-types";
 
 export function addArticle(payload) {
   console.log("add");
@@ -21,6 +21,19 @@ export function login(){
     console.log("login dispatch");
     return {
         type: LOGIN_PENDING
+    }
+}
+
+export function loginsuc(res){
+    return {
+        type: LOGIN_SUCCESSFUL,
+        payload: res
+    }
+}
+
+export function loginunsuc(){
+    return {
+        type: LOGIN_UNSUCCESSFUL
     }
 }
 

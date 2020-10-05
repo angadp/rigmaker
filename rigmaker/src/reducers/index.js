@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL, LOGIN_UNSUCCESSFUL } from "../constants/action-types";
 
 const initialState = {
   articles: [],
@@ -6,7 +6,9 @@ const initialState = {
   products: [],
   error: null,
   orig_products: [],
-  components: {}
+  components: {},
+  user: {},
+  login_success: false
 };
 
 function checkMatch(word) {
@@ -18,16 +20,22 @@ export function rootReducer(state = initialState, action) {
     console.log(action.type)
     switch(action.type) {
         case LOGIN_PENDING:
-            console.log('login');
             return {
                 ...state,
                 pending: true
             }
         case LOGIN_SUCCESSFUL:
-            console.log('login');
             return {
                 ...state,
-                pending: false
+                pending: false,
+                user: action.payload.data,
+                login_success: true
+            }
+        case LOGIN_UNSUCCESSFUL:
+            return {
+                ...state,
+                pending: false,
+                login_success: false
             }
         case FETCH_PRODUCTS_PENDING: 
             return {
@@ -121,3 +129,4 @@ export const getProducts = state => state.products;
 export const getProductsPending = state => state.pending;
 export const getProductsError = state => state.error;
 export const getComponents = state => state.components;
+export const getLoginSucess = state => state.login_success;
