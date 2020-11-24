@@ -12,7 +12,9 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
+import {StripeProvider} from 'react-stripe-elements';
 import Review from './Review';
+import StripeScriptLoader from 'react-stripe-script-loader'
 
 function Copyright() {
   return (
@@ -66,12 +68,12 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step) {
+function getStepContent(step, handleNext, handleBack) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm handleNext={handleNext}/>;
     case 1:
-      return <PaymentForm />;
+      return <StripeProvider apiKey="pk_test_51HqghdJm6nRB5ZcGMKbxcLi0tOMfoJlsmFBc8inJT3qE1NzhFLT2ToPC54hrbwOdikBe9vDnXzRJTDcnKkhYxNUA00trpStnxJ"><PaymentForm handleNext={handleNext} handleBack={handleBack} /></StripeProvider>;
     case 2:
       return <Review />;
     default:
@@ -95,11 +97,6 @@ export default function Checkout() {
     <React.Fragment>
       <CssBaseline />
       <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
@@ -126,22 +123,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </div>
+                {getStepContent(activeStep, handleNext, handleBack)}
               </React.Fragment>
             )}
           </React.Fragment>

@@ -51,9 +51,12 @@ export function fetchProductsSuccess(products) {
     }
 }
 
-export function sortProducts(){
+export function sortProducts(e, val){
+    console.log(e);
     return {
-        type: SORT_PRODUCTS
+        type: SORT_PRODUCTS,
+        sort: e,
+        val: val
     }
 }
 

@@ -98,6 +98,10 @@ class ComponentHeader extends Component {
       searchProducts(e.target.value);
     }
 
+    handleSort(e) {
+      console.log(e);
+    }
+
   render()
   {
     var current = ""
@@ -139,9 +143,9 @@ class ComponentHeader extends Component {
         </Tabs>
       </AppBar>
       <TabPanel value={this.state.val} index={0} >
-        <SearchField onChange={this.handleChange} />
+        <SearchField onChange={this.handleChange} onSort={this.handleSort} />
         <div class="alert alert-primary" role="alert" style={{minWidth: 450}}>
-          {current}
+          <b>Current Component: </b>{current}
         </div>
         <Comps products={this.props.products}/>
       </TabPanel>

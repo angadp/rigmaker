@@ -697,6 +697,8 @@
 	width: 50%;
 	margin: 0 auto;
 	margin-left: 25%;
+  object-fit: cover;
+  height:50%;
 }
 
 .Comps {
@@ -717,4 +719,12 @@
 
 .CarouselItem {
 	margin: 0 auto;
+}
+
+.StripeElement {
+  width: 70%;
+  float: right;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
 }

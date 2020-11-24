@@ -1,9 +1,9 @@
 import {sortProducts, sortProductsPending} from '../actions';
 
-function sortProductsAction() {
+function sortProductsAction(e, val) {
     return dispatch => {
         dispatch(sortProductsPending());
-        dispatch(sortProducts());
+        dispatch(sortProducts(e, val));
     }
 }
 

@@ -28,7 +28,9 @@ export default function SearchField(props) {
   return (
     <Paper component="form" className={classes.root} 
           style={{ minWidth: 450 }}>
-      <SortMenu />
+      <SortMenu
+        change={props.onSort}
+       />
       <InputBase
         className={classes.input}
         onChange={props.onChange}

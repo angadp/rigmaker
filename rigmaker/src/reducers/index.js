@@ -61,9 +61,69 @@ export function rootReducer(state = initialState, action) {
                 pending: true
             }
         case SORT_PRODUCTS:
-            var prods = state.products.sort(function(a,b){
-                return a.Cores - b.Cores
-            });
+            console.log(action.sort)
+            var prods = null;
+            switch(action.sort){
+                case "name":
+                    prods = state.products.sort(function(a,b){
+                        if(action.val=="asc")
+                        {
+                            if(a.Name < b.Name) { return -1; }
+                            if(a.Name > b.Name) { return 1; }
+                            return 0;
+                        }
+                        else
+                        {
+                            if(a.Name > b.Name) { return -1; }
+                            if(a.Name < b.Name) { return 1; }
+                            return 0;
+                        }
+                    });
+                case "cpu":
+                    prods = state.products.sort(function(a,b){
+                        if(action.val=="asc")
+                        {
+                            return a.Cores = b.Cores
+                        }
+                        else
+                        {
+                            return b.Cores = a.Cores
+                        }
+                    });
+                case "speed":
+                    prods = state.products.sort(function(a,b){
+                        if(action.val=="asc")
+                        {
+                            return a.Speed - b.Speed
+                        }
+                        else
+                        {
+                            return b.Speed - a.Speed
+                        }
+                    });
+                case "power":
+                    prods = state.products.sort(function(a,b){
+                        if(action.val=="asc")
+                        {
+                            return a.Power - b.Power
+                        }
+                        else
+                        {
+                            return b.Power - a.Power
+                        }
+                    });
+                case "price":
+                    prods = state.products.sort(function(a,b){
+                        if(action.val=="asc")
+                        {
+                            return a.Price - b.Price
+                        }
+                        else
+                        {
+                            return b.Price - a.Price
+                        }
+                    });
+            }
             console.log(prods);
             return {
                 ...state,
@@ -77,15 +137,12 @@ export function rootReducer(state = initialState, action) {
             }
         case SEARCH_PRODUCTS:
             prods = []
-            var i;
-            console.log(state.orig_products)
-            for(i=0;i<state.orig_products.length;i++)
-            {
-                if(state.orig_products[i].Name.toLowerCase().startsWith(action.payload)) {
-                    prods.push(state.orig_products[i])
-                }
-            }
-            console.log(prods)
+            const lowercasedFilter = action.payload.toLowerCase();
+            console.log(lowercasedFilter)
+            state.orig_products.forEach(function(person){
+                if(person.Name.toLowerCase().indexOf(lowercasedFilter)!=-1)
+                prods.push(person);
+            });
             return {
                 ...state,
                 pending: false,
