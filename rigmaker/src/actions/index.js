@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL, LOGIN_UNSUCCESSFUL } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL, LOGIN_UNSUCCESSFUL, INIT_RIG, FETCH_RIG_SUCCESS, FETCH_RIG_FAIL } from "../constants/action-types";
 
 export function addArticle(payload) {
   console.log("add");
@@ -84,5 +84,26 @@ export function fetchProductsError(error) {
     return {
         type: FETCH_PRODUCTS_ERROR,
         error: error
+    }
+}
+
+export function initRig(rigNo){
+    console.log("initRig");
+    return {
+        type: INIT_RIG,
+        rigNo:rigNo
+    }
+}
+
+export function fetchRigSuccess(rig){
+    return {
+        type: FETCH_RIG_SUCCESS,
+        rig: rig
+    }
+}
+
+export function fetchRigFail(error){
+    return{
+        type: FETCH_RIG_FAIL
     }
 }

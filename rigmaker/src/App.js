@@ -18,7 +18,7 @@ import { Provider } from 'react-redux'
 function App() {
   return (
   	<Router  history={history}>
-        <Route path="/" component={Home} exact />
+        <Route path="/rig/:id"  render={(props) => <Home {...props} />}  />
         <Route path="/cart" component={Cart} />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={SignUpPage} />
@@ -31,13 +31,19 @@ function App() {
 export default App;
 
 export class Home extends Component {
+	constructor(props){
+		super(props);
+	}
+
 	render(){
+		var rigNo = this.props.match.params.id;
+		console.log(rigNo);
 		return (
 		  	<Provider store={store}>
 			  <Drawer>
 			  	<Cabinet />
 			  </Drawer>
-			  <ComponentChooser />
+			  <ComponentChooser rigNo={rigNo}/>
 			</Provider>
   );
 	}

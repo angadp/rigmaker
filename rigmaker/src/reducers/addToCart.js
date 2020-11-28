@@ -1,4 +1,5 @@
 import {addProcessor, addProcessorPending} from '../actions';
+import axios from 'axios';
 
 function addProcessorAction(i, selected) {
 	console.log(i);

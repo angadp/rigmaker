@@ -1,8 +1,10 @@
-import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL, LOGIN_UNSUCCESSFUL } from "../constants/action-types";
+import { ADD_ARTICLE, FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, SORT_PRODUCTS, SORT_PRODUCTS_PENDING, SEARCH_PRODUCTS, SEARCH_PRODUCTS_PENDING, ADD_PROCESSOR, ADD_PROCESSOR_PENDING, LOGIN_PENDING, LOGIN_SUCCESSFUL, LOGIN_UNSUCCESSFUL, INIT_RIG, FETCH_RIG_SUCCESS, FETCH_RIG_FAIL } from "../constants/action-types";
 
 const initialState = {
   articles: [],
   pending: false,
+  rigNo: "",
+  rigPending: false,
   products: [],
   error: null,
   orig_products: [],
@@ -19,6 +21,30 @@ function checkMatch(word) {
 export function rootReducer(state = initialState, action) {
     console.log(action.type)
     switch(action.type) {
+        case INIT_RIG:
+            return{
+                ...state,
+                rigPending: true
+            }
+        case FETCH_RIG_SUCCESS:
+            var comp = null;
+            if(JSON.stringify(action.rig[0]) === '{}')
+            {
+                comp = {rigNo: state.rigNo}
+            }
+            else{
+                comp = action.rig[0]
+            }
+            return{
+                ...state,
+                components: action.rig[0],
+                rigPending: false
+            }
+        case FETCH_RIG_FAIL:
+            return {
+                ...state,
+                rigPending:false
+            }
         case LOGIN_PENDING:
             return {
                 ...state,
@@ -154,7 +180,6 @@ export function rootReducer(state = initialState, action) {
                 pending: true
             }
         case ADD_PROCESSOR:
-            console.log("Called t");
             if(state.components == undefined)
             {
                 state.components = {}
@@ -187,3 +212,4 @@ export const getProductsPending = state => state.pending;
 export const getProductsError = state => state.error;
 export const getComponents = state => state.components;
 export const getLoginSucess = state => state.login_success;
+export const getRig = state => state.rig;
